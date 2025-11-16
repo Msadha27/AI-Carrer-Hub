@@ -12,7 +12,7 @@ import docx
 import io
 import requests
 
-# Try importing Sentence-BERT components (optional)
+# importing Sentence-BERT components (optional)
 try:
     from sentence_transformers import SentenceTransformer
     SBERT_AVAILABLE = True
@@ -1869,3 +1869,4 @@ if __name__ == '__main__':
     print("📍 Server: http://localhost:5000")
     print("=" * 60)
     app.run(debug=True, port=5000, host='0.0.0.0')
+
