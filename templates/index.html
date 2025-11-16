@@ -688,6 +688,42 @@
             cursor: pointer;
         }
 
+        /* Recommendation Boxes */
+        .recommendation-box {
+            border: 3px solid transparent;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .recommendation-box.active {
+            border-color: var(--primary);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .recommendation-box.ai {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .recommendation-box.manual {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .recommendation-box h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .recommendation-box p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -910,11 +946,49 @@
     <!-- Recommendations Section -->
     <section id="recommendations" class="section hidden">
         <div class="container">
-            <div class="card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white;">
-                <h2 style="color: white;"><i class="fas fa-sparkles"></i> Semantic Job Matching</h2>
-                <p>Get personalized recommendations using advanced AI</p>
+            <!-- AI Recommendations Box -->
+            <div id="aiRecommendationsBox" class="recommendation-box ai active">
+                <h2><i class="fas fa-sparkles"></i> AI-Powered Job Matching</h2>
+                <p>Get personalized recommendations using advanced AI and your resume analysis</p>
                 <button class="btn" style="background: white; color: var(--primary);" onclick="getAutoRecommendations()">
                     <i class="fas fa-robot"></i> Get AI Recommendations
+                </button>
+            </div>
+
+            <!-- Manual Skills Box -->
+            <div id="manualSkillsBox" class="recommendation-box manual">
+                <h2><i class="fas fa-edit"></i> Manual Skills Search</h2>
+                <p>Enter your skills manually to find matching jobs</p>
+                
+                <div class="form-group">
+                    <label style="color: white;">Your Skills (comma separated or add individually)</label>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="text" id="manualSkillInput" placeholder="e.g., Python, JavaScript, React" style="flex: 1;">
+                        <button class="btn" style="background: white; color: var(--success);" onclick="addManualSkill()">
+                            <i class="fas fa-plus"></i> Add
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="color: white;">Your Skills</label>
+                    <div id="manualSkillsContainer" class="skills-input" style="background: rgba(255,255,255,0.9);">
+                        <!-- Manual skills will be added here -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="color: white;">Experience Level</label>
+                    <select id="manualExperience" style="background: white;">
+                        <option value="0-1">0-1 years (Entry Level)</option>
+                        <option value="1-3">1-3 years (Junior)</option>
+                        <option value="3-5">3-5 years (Mid Level)</option>
+                        <option value="5+">5+ years (Senior)</option>
+                    </select>
+                </div>
+
+                <button class="btn" style="background: white; color: var(--success); width: 100%;" onclick="getManualRecommendations()">
+                    <i class="fas fa-search"></i> Find Jobs with My Skills
                 </button>
             </div>
 
@@ -1075,6 +1149,8 @@
         let currentQuestions = [];
         let currentQuestionIndex = 0;
         const commonSkills = ['Python', 'JavaScript', 'React', 'SQL', 'Data Science', 'Machine Learning', 'AWS', 'Docker', 'Node.js', 'Java'];
+        let manualSkills = [];
+        let currentJobPreparation = null;
 
         // Alert system
         function showAlert(message, type = 'info') {
@@ -1113,6 +1189,22 @@
             }
             if (sectionId === 'profile' && currentUser) {
                 loadUserHistory();
+            }
+            if (sectionId === 'recommendations') {
+                highlightRecommendationBox('ai');
+            }
+        }
+
+        // Highlight recommendation boxes
+        function highlightRecommendationBox(type) {
+            document.querySelectorAll('.recommendation-box').forEach(box => {
+                box.classList.remove('active');
+            });
+            
+            if (type === 'ai') {
+                document.getElementById('aiRecommendationsBox').classList.add('active');
+            } else {
+                document.getElementById('manualSkillsBox').classList.add('active');
             }
         }
 
@@ -1267,6 +1359,55 @@
             }
         }
 
+        // Manual Skills Functions
+        function loadManualSkills() {
+            const container = document.getElementById('manualSkillsContainer');
+            container.innerHTML = '';
+            
+            manualSkills.forEach(skill => {
+                const skillElement = document.createElement('div');
+                skillElement.className = 'skill-tag';
+                skillElement.innerHTML = `
+                    ${skill}
+                    <i class="fas fa-times" onclick="removeManualSkill('${skill}')"></i>
+                `;
+                container.appendChild(skillElement);
+            });
+        }
+
+        function addManualSkill() {
+            const skillInput = document.getElementById('manualSkillInput');
+            const skill = skillInput.value.trim();
+            
+            if (!skill) {
+                showAlert('Please enter a skill', 'error');
+                return;
+            }
+            
+            // Handle comma-separated skills
+            if (skill.includes(',')) {
+                const skills = skill.split(',').map(s => s.trim()).filter(s => s);
+                skills.forEach(s => {
+                    if (s && !manualSkills.includes(s)) {
+                        manualSkills.push(s);
+                    }
+                });
+            } else {
+                if (!manualSkills.includes(skill)) {
+                    manualSkills.push(skill);
+                }
+            }
+            
+            skillInput.value = '';
+            loadManualSkills();
+            highlightRecommendationBox('manual');
+        }
+
+        function removeManualSkill(skill) {
+            manualSkills = manualSkills.filter(s => s !== skill);
+            loadManualSkills();
+        }
+
         // Job Recommendations
         async function getAutoRecommendations() {
             if (!currentUser) {
@@ -1279,6 +1420,7 @@
             resultsDiv.innerHTML = '<div class="card"><div class="spinner"></div><p style="text-align: center;">Finding matches with Sentence-BERT...</p></div>';
 
             showSection('recommendations');
+            highlightRecommendationBox('ai');
 
             try {
                 const response = await fetch('/api/auto-recommendations');
@@ -1288,6 +1430,42 @@
                     displayRecommendations(data.recommendations, data);
                     showAlert(`Found ${data.recommendations.length} matches (${data.matching_method})`, 'success');
                     addUserHistory('Job Search', `Found ${data.recommendations.length} job matches using ${data.matching_method}`);
+                } else {
+                    resultsDiv.innerHTML = `<div class="card"><div class="alert alert-error">${data.message}</div></div>`;
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = '<div class="card"><div class="alert alert-error">Failed to load recommendations</div></div>';
+            }
+        }
+
+        async function getManualRecommendations() {
+            if (manualSkills.length === 0) {
+                showAlert('Please add at least one skill', 'error');
+                return;
+            }
+
+            const experience = document.getElementById('manualExperience').value;
+            const resultsDiv = document.getElementById('recommendationsResults');
+            resultsDiv.innerHTML = '<div class="card"><div class="spinner"></div><p style="text-align: center;">Finding matches for your skills...</p></div>';
+
+            highlightRecommendationBox('manual');
+
+            try {
+                const response = await fetch('/api/recommendations', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        skills: manualSkills,
+                        experience: experience
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    displayRecommendations(data.recommendations, {matching_method: 'Manual Skills'});
+                    showAlert(`Found ${data.recommendations.length} matches for your skills`, 'success');
+                    addUserHistory('Manual Job Search', `Found ${data.recommendations.length} job matches using manual skills`);
                 } else {
                     resultsDiv.innerHTML = `<div class="card"><div class="alert alert-error">${data.message}</div></div>`;
                 }
@@ -1310,6 +1488,13 @@
                     <div class="card" style="background: linear-gradient(135deg, var(--info), #2563eb); color: white;">
                         <h3 style="color: white;"><i class="fas fa-satellite-dish"></i> Live Job Results</h3>
                         <p>Fetched ${metadata.api_results} real jobs from APIs • ${metadata.matching_method} matching</p>
+                    </div>
+                `;
+            } else if (metadata.matching_method === 'Manual Skills') {
+                headerHTML = `
+                    <div class="card" style="background: linear-gradient(135deg, var(--success), #059669); color: white;">
+                        <h3 style="color: white;"><i class="fas fa-user-edit"></i> Manual Skills Search</h3>
+                        <p>Found ${jobs.length} jobs matching your skills</p>
                     </div>
                 `;
             }
@@ -1351,11 +1536,11 @@
                                 <i class="fas fa-external-link-alt"></i> Apply on Site
                             </a>
                         ` : ''}
-                        <button class="btn btn-warning" onclick="startJobPreparation('${job.id || ''}', '${job.title}', '${job.company}', '${job.description.replace(/'/g, "\\'")}')">
+                        <button class="btn btn-warning" onclick="startJobPreparation('${job.id || job.title + '-' + job.company}', '${job.title}', '${job.company}', '${job.description.replace(/'/g, "\\'")}', '${job.skills.join(',')}')">
                             <i class="fas fa-briefcase"></i> Prepare for Interview
                         </button>
                         ${currentUser ? `
-                            <button class="btn btn-secondary" onclick="saveJob('${job.id || ''}', '${job.title}', '${job.company}')">
+                            <button class="btn btn-secondary" onclick="saveJob('${job.id || job.title + '-' + job.company}', '${job.title}', '${job.company}')">
                                 <i class="fas fa-bookmark"></i> Save Job
                             </button>
                         ` : ''}
@@ -1508,7 +1693,7 @@
             `).join('');
         }
 
-        // Interview Practice Functions (existing code)
+        // Interview Practice Functions
         function loadSkills() {
             const container = document.getElementById('skillsContainer');
             container.innerHTML = '';
@@ -1757,9 +1942,18 @@
             showAlert('Interview history feature coming soon!', 'info');
         }
 
-        // Job Preparation Functions
-        async function startJobPreparation(jobId, jobTitle, company, description) {
+        // Job Preparation Functions - FIXED FOR API JOBS
+        async function startJobPreparation(jobId, jobTitle, company, description, skills = '') {
             try {
+                // Store current job preparation data
+                currentJobPreparation = {
+                    jobId: jobId,
+                    jobTitle: jobTitle,
+                    company: company,
+                    description: description,
+                    skills: skills
+                };
+
                 const response = await fetch('/api/start-job-preparation', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
@@ -1767,15 +1961,17 @@
                         job_id: jobId,
                         job_title: jobTitle,
                         company: company,
-                        job_description: description
+                        job_description: description,
+                        skills: skills
                     })
                 });
 
                 const data = await response.json();
 
                 if (data.success) {
-                    showAlert('Job preparation started!', 'success');
+                    showAlert(`Job preparation started for ${jobTitle} at ${company}!`, 'success');
                     showSection('interview');
+                    
                     // Pre-fill the interview form with job-specific questions
                     document.getElementById('jobDescription').value = description;
                     currentQuestions = data.questions;
@@ -1817,12 +2013,65 @@
                             <p style="margin: 1rem 0 0; color: #6b7280; font-size: 0.9rem;">
                                 ${prep.questions_count} questions • Created ${new Date(prep.created_at).toLocaleDateString()}
                             </p>
+                            <div class="job-actions">
+                                <button class="btn btn-primary" onclick="continueJobPreparation('${prep.job_title}', '${prep.company}', '${JSON.stringify(prep.skills)}')">
+                                    <i class="fas fa-play"></i> Continue Preparation
+                                </button>
+                            </div>
                         </div>
                     `).join('');
                 }
             } catch (error) {
                 console.error('Error loading preparation history:', error);
             }
+        }
+
+        function continueJobPreparation(jobTitle, company, skills) {
+            showAlert(`Continuing preparation for ${jobTitle}`, 'info');
+            showSection('interview');
+            
+            // Generate questions based on the job skills
+            const skillsArray = JSON.parse(skills);
+            const questions = generateQuestionsFromSkills(skillsArray, jobTitle);
+            
+            currentQuestions = questions;
+            currentQuestionIndex = 0;
+            showQuestionsList();
+            showNextQuestion();
+        }
+
+        function generateQuestionsFromSkills(skills, jobTitle) {
+            // Simple question generation based on skills
+            const questions = [];
+            
+            skills.forEach(skill => {
+                questions.push({
+                    question: `Tell me about your experience with ${skill} and how you've used it in previous projects.`,
+                    skill: skill,
+                    difficulty: "Intermediate",
+                    category: "Technical",
+                    hints: ["Focus on specific projects", "Mention challenges and how you overcame them"]
+                });
+                
+                questions.push({
+                    question: `How would you approach learning a new aspect of ${skill} if required for this ${jobTitle} position?`,
+                    skill: skill,
+                    difficulty: "Basic",
+                    category: "Behavioral",
+                    hints: ["Discuss learning strategies", "Mention resources you would use"]
+                });
+            });
+            
+            // Add some general questions
+            questions.push({
+                question: `Why are you interested in this ${jobTitle} position?`,
+                skill: "Company Fit",
+                difficulty: "Basic",
+                category: "Behavioral",
+                hints: ["Research the company", "Connect your skills to the role"]
+            });
+            
+            return questions;
         }
 
         // Initialize
