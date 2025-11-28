@@ -6,6 +6,235 @@
     <title>AI Career Hub - Smart Job Matching & Interview Prep</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Add these new styles to your existing CSS */
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .features-section {
+            margin: 4rem 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .testimonial-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: left;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .cta-section {
+            background: var(--gradient);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            margin: 4rem 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .tech-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .tech-stack {
+                gap: 1rem;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -23,13 +252,15 @@
             --dark: #1f2937;
             --light: #f9fafb;
             --border: #e5e7eb;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: var(--dark);
+            line-height: 1.6;
         }
 
         .container {
@@ -40,13 +271,13 @@
 
         /* Navigation */
         nav {
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
             padding: 1rem 2rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
         }
 
         nav .nav-content {
@@ -58,9 +289,9 @@
         }
 
         nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: flex;
@@ -70,7 +301,7 @@
 
         nav .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -78,39 +309,40 @@
         nav a {
             color: var(--dark);
             text-decoration: none;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
+            transition: all 0.3s ease;
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-weight: 600;
         }
 
         nav a:hover {
-            background: var(--primary);
             color: white;
+            background: var(--gradient);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
         }
 
         /* Cards */
         .card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            animation: slideUp 0.5s ease-out;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .card h2 {
@@ -118,371 +350,166 @@
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 700;
         }
 
         /* Dashboard Grid */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 3rem 0;
         }
 
         .dashboard-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            padding: 3rem 2rem;
             text-align: center;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
             cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         .dashboard-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.3);
         }
 
         .dashboard-card i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .dashboard-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .dashboard-card p {
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        /* Feature Cards */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 2rem;
+        /* Hero Section */
+        .hero {
             text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6rem 2rem;
+            color: white;
         }
 
-        .feature-card i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
         }
 
-        .feature-card h4 {
-            margin-bottom: 1rem;
-            color: var(--dark);
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
         }
 
         /* Job Cards */
         .job-card {
-            border: 2px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            background: white;
-            transition: all 0.3s;
+            border: 2px solid rgba(229, 231, 235, 0.5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .job-card:hover {
             border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .job-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--dark);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .match-score {
-            background: linear-gradient(135deg, var(--success), #059669);
+            background: var(--gradient);
             color: white;
-            padding: 0.6rem 1.2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 25px;
-            font-weight: bold;
-            display: flex;
+            font-weight: 700;
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .job-source-badge {
-            display: inline-block;
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
-        .source-api {
-            background: linear-gradient(135deg, var(--info), #2563eb);
-            color: white;
-        }
-
-        .source-db {
-            background: #e0e7ff;
-            color: var(--primary);
-        }
-
-        .job-company {
-            color: var(--primary);
             font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .job-details {
-            display: flex;
-            gap: 1.5rem;
-            margin: 1rem 0;
-            flex-wrap: wrap;
-        }
-
-        .job-detail-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #6b7280;
-            font-size: 0.95rem;
         }
 
         .job-skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 0.7rem;
+            margin-top: 1.5rem;
         }
 
         .job-skill {
             background: #e0e7ff;
             color: var(--primary);
-            padding: 0.4rem 0.9rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .job-skill.matched {
-            background: linear-gradient(135deg, var(--success), #059669);
+            background: var(--gradient);
             color: white;
-            font-weight: 600;
         }
 
-        .job-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .job-actions .btn {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        /* Interview Practice Styles */
-        .interview-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border-left: 6px solid var(--primary);
-        }
-
-        .question-card {
-            background: #f8fafc;
+        /* Save Job Button */
+        .save-job-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
             border: 2px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .question-card:hover {
-            border-color: var(--primary);
-            background: #f0f9ff;
-        }
-
-        .question-card.active {
-            border-color: var(--primary);
-            background: #e0f2fe;
-        }
-
-        .skill-badge {
-            display: inline-block;
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-technical { background: #dbeafe; color: #1e40af; }
-        .skill-behavioral { background: #f3e8ff; color: #7c3aed; }
-        .skill-general { background: #dcfce7; color: #166534; }
-
-        .difficulty-badge {
-            display: inline-block;
-            padding: 0.3rem 0.7rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 0.5rem;
-        }
-
-        .difficulty-easy { background: #dcfce7; color: #166534; }
-        .difficulty-medium { background: #fef3c7; color: #92400e; }
-        .difficulty-advanced { background: #fee2e2; color: #991b1b; }
-
-        .answer-input {
-            width: 100%;
-            min-height: 150px;
-            padding: 1rem;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            font-size: 1rem;
-            resize: vertical;
-            margin: 1rem 0;
-        }
-
-        .answer-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .analysis-result {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            border: 2px solid var(--success);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .score-circle {
-            width: 80px;
-            height: 80px;
             border-radius: 50%;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
-        .score-excellent { background: #10b981; color: white; }
-        .score-good { background: #f59e0b; color: white; }
-        .score-poor { background: #ef4444; color: white; }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-            background: #f8fafc;
-            border-radius: 12px;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            color: #6b7280;
-            font-size: 0.9rem;
-        }
-
-        /* User History */
-        .history-item {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--primary);
-        }
-
-        .history-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .history-type {
-            background: var(--primary);
+        .save-job-btn:hover {
+            background: var(--warning);
             color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            border-color: var(--warning);
+        }
+
+        .save-job-btn.saved {
+            background: var(--warning);
+            color: white;
+            border-color: var(--warning);
         }
 
         /* Buttons */
         .btn {
-            padding: 0.875rem 2rem;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 10px;
-            font-size: 1rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.7rem;
             text-decoration: none;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             color: white;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.6);
         }
 
         .btn-success {
@@ -490,23 +517,8 @@
             color: white;
         }
 
-        .btn-success:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
-        }
-
         .btn-info {
             background: var(--info);
-            color: white;
-        }
-
-        .btn-info:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-secondary {
-            background: var(--secondary);
             color: white;
         }
 
@@ -515,49 +527,75 @@
             color: white;
         }
 
-        .btn-warning:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid rgba(229, 231, 235, 0.8);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
         /* Alert Messages */
         .alert {
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
             display: flex;
             align-items: center;
             gap: 1rem;
-            animation: slideUp 0.3s ease-out;
         }
 
         .alert-success {
-            background: #d1fae5;
+            background: rgba(16, 185, 129, 0.1);
             color: #065f46;
             border-left: 4px solid var(--success);
         }
 
         .alert-error {
-            background: #fee2e2;
+            background: rgba(239, 68, 68, 0.1);
             color: #991b1b;
             border-left: 4px solid var(--danger);
         }
 
         .alert-info {
-            background: #dbeafe;
+            background: rgba(59, 130, 246, 0.1);
             color: #1e40af;
             border-left: 4px solid var(--primary);
-        }
-
-        /* Stats Badge */
-        .stats-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
         }
 
         /* Loading spinner */
@@ -565,10 +603,10 @@
             border: 5px solid #f3f4f6;
             border-top: 5px solid var(--primary);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             animation: spin 1s linear infinite;
-            margin: 2rem auto;
+            margin: 3rem auto;
         }
 
         @keyframes spin {
@@ -576,41 +614,58 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Hidden class */
         .hidden {
             display: none !important;
         }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
+        .section {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Score Circle */
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
             color: white;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        .score-excellent {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+        .score-good {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
 
-        /* Grid Layout */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        .score-poor {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
         }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
+        .skill-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-weight: 600;
+        }
+
+        .skill-tag .remove {
+            margin-left: 0.5rem;
+            cursor: pointer;
+            color: var(--danger);
         }
 
         /* Tabs */
@@ -623,130 +678,82 @@
 
         .tab {
             padding: 1rem 2rem;
-            cursor: pointer;
             border: none;
             background: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #6b7280;
             border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .tab.active {
             color: var(--primary);
-            border-bottom-color: var(--primary);
+            border-bottom: 3px solid var(--primary);
         }
 
-        /* Form elements */
-        .form-group {
-            margin-bottom: 1.5rem;
+        .tab:hover {
+            color: var(--primary);
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+        /* Saved Jobs Section */
+        .saved-jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s;
+        .saved-job-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .skills-input {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            padding: 0.75rem;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            min-height: 60px;
-            cursor: text;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-tag i {
-            cursor: pointer;
-        }
-
-        /* Recommendation Boxes */
-        .recommendation-box {
-            border: 3px solid transparent;
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .recommendation-box.active {
-            border-color: var(--primary);
-            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.2);
+        .saved-job-card:hover {
             transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
-        .recommendation-box.ai {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .remove-saved-btn {
+            background: var(--danger);
             color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
-        .recommendation-box.manual {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
+        .remove-saved-btn:hover {
+            background: #dc2626;
+            transform: scale(1.05);
         }
 
-        .recommendation-box h2 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .recommendation-box p {
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             nav .nav-links {
                 gap: 0.5rem;
             }
             
-            .job-actions {
-                flex-direction: column;
-            }
-            
-            .job-actions .btn {
-                width: 100%;
-            }
-
-            .grid-2 {
+            .dashboard-grid {
                 grid-template-columns: 1fr;
             }
 
-            .dashboard-grid {
+            .card {
+                padding: 1.5rem;
+            }
+
+            .saved-jobs-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -761,9 +768,8 @@
             <div class="nav-links">
                 <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a>
                 <a href="#" onclick="showSection('recommendations')"><i class="fas fa-search"></i> Find Jobs</a>
-                <a href="#" onclick="showSection('saved-jobs')" id="savedJobsLink" class="hidden"><i class="fas fa-bookmark"></i> Saved Jobs</a>
-                <a href="#" onclick="showSection('interview')" id="interviewLink" class="hidden"><i class="fas fa-comments"></i> Interview Practice</a>
-                <a href="#" onclick="showSection('job-preparation')" id="jobPrepLink" class="hidden"><i class="fas fa-briefcase"></i> Job Prep</a>
+                <a href="#" onclick="showSection('savedJobs')" id="savedJobsLink" class="hidden"><i class="fas fa-bookmark"></i> Saved Jobs</a>
+                <a href="#" onclick="showSection('interview')" id="interviewLink" class="hidden"><i class="fas fa-comments"></i> Interview</a>
                 <a href="#" onclick="showSection('profile')" id="profileLink" class="hidden"><i class="fas fa-user"></i> Profile</a>
                 <a href="#" onclick="showSection('login')" id="loginLink"><i class="fas fa-sign-in-alt"></i> Login</a>
                 <a href="#" onclick="logout()" id="logoutLink" class="hidden"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -773,98 +779,241 @@
 
     <div id="alertContainer"></div>
 
-    <!-- Home Section -->
+    <!-- Enhanced Home Section -->
     <section id="home" class="section">
-        <div class="hero">
-            <h1><i class="fas fa-rocket"></i> AI-Powered Career Hub</h1>
-            <p>Your intelligent partner for job search, interview preparation, and career growth</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
-                <span class="stats-badge"><i class="fas fa-brain"></i> Semantic Matching</span>
-                <span class="stats-badge"><i class="fas fa-comments"></i> AI Interview Coach</span>
-                <span class="stats-badge"><i class="fas fa-briefcase"></i> Job Preparation</span>
-                <span class="stats-badge"><i class="fas fa-globe"></i> Real Job APIs</span>
+        <!-- Hero Section -->
+        <div class="hero" style="margin: 2rem; border-radius: 30px; background: rgba(0,0,0,0.3); padding: 4rem 2rem;">
+            <h1 style="font-size: 3.5rem;"><i class="fas fa-rocket"></i> AI-Powered Career Hub</h1>
+            <p style="font-size: 1.4rem; max-width: 800px; margin: 0 auto 2rem;">Your intelligent partner for job search and interview preparation</p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                <span style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">
+                    <i class="fas fa-brain"></i> AI-Powered Matching
+                </span>
+                <span style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">
+                    <i class="fas fa-comment-alt"></i> Smart Interview Coach
+                </span>
+                <span style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">
+                    <i class="fas fa-bolt"></i> Real-time Job APIs
+                </span>
             </div>
+            
+            <button class="btn btn-light pulse" onclick="showSection('login')" style="font-size: 1.2rem; padding: 1.2rem 2.5rem;">
+                <i class="fas fa-play"></i> Start Your Journey
+            </button>
         </div>
 
         <div class="container">
+            <!-- Stats Section -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Better Job Matches</div>
+                    <p style="color: #6b7280; font-size: 0.9rem; margin-top: 0.5rem;">AI-powered precision matching</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Job Sources</div>
+                    <p style="color: #6b7280; font-size: 0.9rem; margin-top: 0.5rem;">Real-time from multiple APIs</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">AI Interview Coach</div>
+                    <p style="color: #6b7280; font-size: 0.9rem; margin-top: 0.5rem;">Practice anytime, anywhere</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Skills Tracked</div>
+                    <p style="color: #6b7280; font-size: 0.9rem; margin-top: 0.5rem;">Comprehensive technology coverage</p>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-section">
+                <div class="card" style="text-align: center; background: var(--gradient); color: white;">
+                    <h2 style="color: white;"><i class="fas fa-star"></i> Why Choose AI Career Hub?</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.9;">We combine cutting-edge AI with real-world job data to supercharge your career search</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card floating">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Smart Job Matching</h3>
+                        <p>Our AI analyzes your skills and experience to find the perfect job matches from real-time job APIs including Adzuna and JSearch.</p>
+                    </div>
+                    
+                    <div class="feature-card floating" style="animation-delay: 0.5s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>AI Interview Coach</h3>
+                        <p>Practice with skill-specific interview questions and get instant AI-powered feedback on your answers with detailed analysis.</p>
+                    </div>
+                    
+                    <div class="feature-card floating" style="animation-delay: 1s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-upload"></i>
+                        </div>
+                        <h3>Resume AI Analysis</h3>
+                        <p>Upload your resume and let our AI extract skills automatically, or add them manually for complete control.</p>
+                    </div>
+                    
+                    <div class="feature-card floating" style="animation-delay: 1.5s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-bookmark"></i>
+                        </div>
+                        <h3>Smart Job Tracking</h3>
+                        <p>Save interesting jobs, track your applications, and get personalized recommendations based on your activity.</p>
+                    </div>
+                    
+                    <div class="feature-card floating" style="animation-delay: 2s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Match Score Analytics</h3>
+                        <p>See exactly how well you match with each job and understand which skills are most in demand.</p>
+                    </div>
+                    
+                    <div class="feature-card floating" style="animation-delay: 2.5s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Real-time Updates</h3>
+                        <p>Get live job listings from multiple sources with continuous updates and fresh opportunities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="card" style="text-align: center;">
+                <h2><i class="fas fa-cogs"></i> Powered by Advanced Technology</h2>
+                <p>Our platform leverages cutting-edge technologies to deliver the best career experience</p>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <i class="fas fa-brain"></i> Machine Learning
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-language"></i> Natural Language Processing
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-database"></i> Real-time APIs
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-chart-bar"></i> Smart Analytics
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-cloud"></i> Cloud Infrastructure
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="testimonial-section">
+                <h2 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-heart"></i> Success Stories</h2>
+                <p style="color: #6b7280; font-size: 1.1rem;">See what our users are saying about their career breakthroughs</p>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "The AI job matching found me opportunities I never would have discovered on my own. Landed a full-stack developer role in 2 weeks!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SD</div>
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>Full-Stack Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "The interview coach helped me prepare for my technical interviews. The AI feedback was incredibly detailed and helpful!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MK</div>
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <p>Data Scientist</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Being able to search by specific skills and see match scores made my job hunt so much more efficient. Highly recommended!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">EP</div>
+                            <div class="author-info">
+                                <h4>Emily Parker</h4>
+                                <p>DevOps Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Dashboard Cards -->
             <div class="dashboard-grid">
                 <div class="dashboard-card" onclick="showSection('recommendations')">
                     <i class="fas fa-search"></i>
                     <h3>Smart Job Search</h3>
-                    <p>AI-powered job matching using Sentence-BERT semantic analysis to find your perfect role</p>
+                    <p>AI-powered job matching with real-time job listings from 50+ sources</p>
+                    <div style="margin-top: 1rem; color: var(--primary); font-weight: 600;">
+                        <i class="fas fa-bolt"></i> Find Your Match
+                    </div>
                 </div>
                 
                 <div class="dashboard-card" onclick="showSection('interview')">
                     <i class="fas fa-comments"></i>
                     <h3>AI Interview Coach</h3>
-                    <p>Practice with personalized questions and get instant AI feedback on your answers</p>
-                </div>
-                
-                <div class="dashboard-card" onclick="showSection('job-preparation')">
-                    <i class="fas fa-briefcase"></i>
-                    <h3>Job Preparation</h3>
-                    <p>Prepare for specific roles with customized questions and track your progress</p>
+                    <p>Practice with AI-analyzed feedback and skill-based questions</p>
+                    <div style="margin-top: 1rem; color: var(--primary); font-weight: 600;">
+                        <i class="fas fa-graduation-cap"></i> Practice Now
+                    </div>
                 </div>
                 
                 <div class="dashboard-card" onclick="showSection('profile')">
                     <i class="fas fa-user-graduate"></i>
                     <h3>Career Profile</h3>
-                    <p>Upload your resume, track your progress, and manage your job search journey</p>
+                    <p>Upload resume or add skills manually for personalized matching</p>
+                    <div style="margin-top: 1rem; color: var(--primary); font-weight: 600;">
+                        <i class="fas fa-user-plus"></i> Build Profile
+                    </div>
                 </div>
-            </div>
 
-            <!-- Benefits Section -->
-            <div class="card">
-                <h2><i class="fas fa-star"></i> Why Choose AI Career Hub?</h2>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <i class="fas fa-brain"></i>
-                        <h4>Smart Matching</h4>
-                        <p>Advanced AI understands context and meaning, not just keywords</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-bolt"></i>
-                        <h4>Real-time Analysis</h4>
-                        <p>Get instant feedback on interview answers and skill matches</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h4>Progress Tracking</h4>
-                        <p>Monitor your interview performance and job search progress</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-globe-americas"></i>
-                        <h4>Live Job Data</h4>
-                        <p>Access real job postings from multiple APIs with direct apply links</p>
+                <div class="dashboard-card" onclick="showSection('savedJobs')">
+                    <i class="fas fa-bookmark"></i>
+                    <h3>Saved Jobs</h3>
+                    <p>Keep track of your favorite opportunities and applications</p>
+                    <div style="margin-top: 1rem; color: var(--primary); font-weight: 600;">
+                        <i class="fas fa-bookmark"></i> View Saved
                     </div>
                 </div>
             </div>
 
-            <!-- Quick Stats -->
-            <div class="card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white;">
-                <h2 style="color: white;"><i class="fas fa-chart-bar"></i> Get Started Today</h2>
-                <div class="stats-grid">
-                    <div class="stat-item" style="background: rgba(255,255,255,0.2);">
-                        <div class="stat-value" style="color: white;">95%</div>
-                        <div class="stat-label" style="color: rgba(255,255,255,0.8);">Better Matches</div>
-                    </div>
-                    <div class="stat-item" style="background: rgba(255,255,255,0.2);">
-                        <div class="stat-value" style="color: white;">50+</div>
-                        <div class="stat-label" style="color: rgba(255,255,255,0.8);">Skills Tracked</div>
-                    </div>
-                    <div class="stat-item" style="background: rgba(255,255,255,0.2);">
-                        <div class="stat-value" style="color: white;">1000s</div>
-                        <div class="stat-label" style="color: rgba(255,255,255,0.8);">Live Jobs</div>
-                    </div>
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Ready to Transform Your Career Search?</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 1rem;">Join thousands of job seekers who found their dream jobs with AI Career Hub</p>
+                
+                <div class="cta-buttons">
+                    <button class="btn btn-light" onclick="showSection('login')" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                        <i class="fas fa-user-plus"></i> Get Started Free
+                    </button>
+                    <button class="btn" onclick="showSection('recommendations')" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; font-size: 1.1rem; padding: 1rem 2rem;">
+                        <i class="fas fa-play-circle"></i> See Demo
+                    </button>
                 </div>
-                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
-                    <button class="btn" style="background: white; color: var(--primary);" onclick="showSection('recommendations')">
-                        <i class="fas fa-search"></i> Find Jobs
-                    </button>
-                    <button class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;" onclick="showSection('login')">
-                        <i class="fas fa-user-plus"></i> Get Started
-                    </button>
+                
+                <div style="margin-top: 2rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; font-size: 0.9rem; opacity: 0.8;">
+                    <div><i class="fas fa-check"></i> No credit card required</div>
+                    <div><i class="fas fa-check"></i> Free forever</div>
+                    <div><i class="fas fa-check"></i> Setup in 2 minutes</div>
                 </div>
             </div>
         </div>
@@ -873,12 +1022,12 @@
     <!-- Login Section -->
     <section id="login" class="section hidden">
         <div class="container">
-            <div class="card" style="max-width: 550px; margin: 2rem auto;">
+            <div class="card" style="max-width: 500px; margin: 4rem auto;">
                 <h2><i class="fas fa-sign-in-alt"></i> Welcome Back</h2>
                 
                 <div class="tabs">
-                    <button class="tab active" onclick="showAuthTab('login')">Login</button>
-                    <button class="tab" onclick="showAuthTab('register')">Register</button>
+                    <button class="tab active" onclick="showAuthTab('login')" id="loginTab">Login</button>
+                    <button class="tab" onclick="showAuthTab('register')" id="registerTab">Register</button>
                 </div>
 
                 <div id="loginForm">
@@ -890,7 +1039,7 @@
                         <label>Password</label>
                         <input type="password" id="loginPassword" placeholder="••••••••">
                     </div>
-                    <button class="btn btn-primary" style="width: 100%;" onclick="handleLogin()">Login</button>
+                    <button class="btn btn-primary btn-full" onclick="handleLogin()">Login</button>
                 </div>
 
                 <div id="registerForm" class="hidden">
@@ -906,7 +1055,7 @@
                         <label>Password</label>
                         <input type="password" id="registerPassword" placeholder="••••••••">
                     </div>
-                    <button class="btn btn-primary" style="width: 100%;" onclick="handleRegister()">Create Account</button>
+                    <button class="btn btn-primary btn-full" onclick="handleRegister()">Create Account</button>
                 </div>
             </div>
         </div>
@@ -915,230 +1064,151 @@
     <!-- Profile Section -->
     <section id="profile" class="section hidden">
         <div class="container">
-            <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <!-- Resume Upload -->
+            <div class="card" style="background: var(--gradient); color: white;">
                 <h2 style="color: white;"><i class="fas fa-file-upload"></i> Upload Resume for AI Analysis</h2>
-                <p>Sentence-BERT will extract your skills and match you with relevant jobs</p>
+                <p>AI will extract your skills automatically</p>
                 
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <input type="file" id="resumeFile" accept=".pdf,.doc,.docx,.txt" style="background: white; color: var(--dark); padding: 1rem;">
+                <div class="form-group" style="margin-top: 2rem;">
+                    <input type="file" id="resumeFile" accept=".pdf,.doc,.docx,.txt" style="background: white; color: var(--dark);">
                 </div>
 
-                <button class="btn" style="background: white; color: var(--primary); width: 100%;" onclick="uploadResume()">
+                <button class="btn btn-light btn-full" onclick="uploadResume()">
                     <i class="fas fa-magic"></i> Upload & Analyze
                 </button>
             </div>
 
-            <div id="extractionResults" class="hidden"></div>
-
-            <!-- User History -->
+            <!-- Manual Skill Input -->
             <div class="card">
-                <h2><i class="fas fa-history"></i> Your Activity History</h2>
-                <div id="userHistory">
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Your activity history will appear here as you use the platform</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recommendations Section -->
-    <section id="recommendations" class="section hidden">
-        <div class="container">
-            <!-- AI Recommendations Box -->
-            <div id="aiRecommendationsBox" class="recommendation-box ai active">
-                <h2><i class="fas fa-sparkles"></i> AI-Powered Job Matching</h2>
-                <p>Get personalized recommendations using advanced AI and your resume analysis</p>
-                <button class="btn" style="background: white; color: var(--primary);" onclick="getAutoRecommendations()">
-                    <i class="fas fa-robot"></i> Get AI Recommendations
-                </button>
-            </div>
-
-            <!-- Manual Skills Box -->
-            <div id="manualSkillsBox" class="recommendation-box manual">
-                <h2><i class="fas fa-edit"></i> Manual Skills Search</h2>
-                <p>Enter your skills manually to find matching jobs</p>
+                <h2><i class="fas fa-keyboard"></i> Add Skills Manually</h2>
+                <p>Enter your skills one by one or comma-separated</p>
                 
                 <div class="form-group">
-                    <label style="color: white;">Your Skills (comma separated or add individually)</label>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <input type="text" id="manualSkillInput" placeholder="e.g., Python, JavaScript, React" style="flex: 1;">
-                        <button class="btn" style="background: white; color: var(--success);" onclick="addManualSkill()">
-                            <i class="fas fa-plus"></i> Add
-                        </button>
-                    </div>
+                    <label>Skills (comma-separated)</label>
+                    <input type="text" id="manualSkills" placeholder="e.g., Python, JavaScript, React, SQL">
                 </div>
 
                 <div class="form-group">
-                    <label style="color: white;">Your Skills</label>
-                    <div id="manualSkillsContainer" class="skills-input" style="background: rgba(255,255,255,0.9);">
-                        <!-- Manual skills will be added here -->
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label style="color: white;">Experience Level</label>
-                    <select id="manualExperience" style="background: white;">
+                    <label>Experience Level</label>
+                    <select id="experienceLevel">
                         <option value="0-1">0-1 years (Entry Level)</option>
                         <option value="1-3">1-3 years (Junior)</option>
-                        <option value="3-5">3-5 years (Mid Level)</option>
+                        <option value="3-5">3-5 years (Mid-level)</option>
                         <option value="5+">5+ years (Senior)</option>
                     </select>
                 </div>
 
-                <button class="btn" style="background: white; color: var(--success); width: 100%;" onclick="getManualRecommendations()">
-                    <i class="fas fa-search"></i> Find Jobs with My Skills
+                <button class="btn btn-success btn-full" onclick="addManualSkills()">
+                    <i class="fas fa-plus-circle"></i> Add Skills
                 </button>
+
+                <div id="currentSkills" class="hidden" style="margin-top: 2rem;">
+                    <h3>Your Current Skills:</h3>
+                    <div id="skillsList" style="margin-top: 1rem;"></div>
+                </div>
             </div>
 
-            <div id="recommendationsResults"></div>
+            <div id="extractionResults" class="hidden"></div>
         </div>
     </section>
 
-    <!-- Saved Jobs Section -->
-    <section id="saved-jobs" class="section hidden">
-        <div class="container">
-            <div class="card">
-                <h2><i class="fas fa-bookmark"></i> Saved Jobs</h2>
-                <p>Your bookmarked jobs for easy access</p>
-                <button class="btn btn-secondary" onclick="loadSavedJobs()">
-                    <i class="fas fa-sync"></i> Refresh
+    <!-- Recommendations Section -->
+<section id="recommendations" class="section hidden">
+    <div class="container">
+        <div class="card" style="background: var(--gradient); color: white;">
+            <h2 style="color: white;"><i class="fas fa-robot"></i> AI-Powered Job Matching</h2>
+            <p>Get personalized recommendations or search for specific skills</p>
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-top: 1.5rem;">
+                <div>
+                    <label style="color: white; margin-bottom: 0.5rem; display: block;">Search Specific Skills</label>
+                    <input type="text" id="skillSearch" placeholder="e.g., Python, React, AWS, Data Science" 
+                           style="width: 100%; padding: 1rem; border: none; border-radius: 12px; font-size: 1rem;">
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: flex-end;">
+                    <button class="btn btn-light" onclick="searchJobsBySkill()" style="height: fit-content;">
+                        <i class="fas fa-search"></i> Search Jobs
+                    </button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.3);">
+                <p style="margin-bottom: 1rem;">Or get AI recommendations based on your profile</p>
+                <button class="btn btn-light" onclick="getAutoRecommendations()">
+                    <i class="fas fa-sparkles"></i> Get AI Recommendations
                 </button>
             </div>
-            <div id="savedJobsResults"></div>
+        </div>
+
+        <!-- Search Results Header -->
+        <div id="searchResultsHeader" class="hidden" style="margin-bottom: 1.5rem;">
+            <div class="card" style="background: #f8fafc; border-left: 4px solid var(--primary);">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">
+                    <i class="fas fa-search"></i> Search Results
+                </h3>
+                <p id="searchQueryText" style="color: #6b7280;"></p>
+                <button class="btn btn-secondary" onclick="clearSearch()" style="margin-top: 0.5rem;">
+                    <i class="fas fa-times"></i> Clear Search
+                </button>
+            </div>
+        </div>
+
+        <div id="recommendationsResults"></div>
+    </div>
+</section>
+    <!-- Saved Jobs Section -->
+    <section id="savedJobs" class="section hidden">
+        <div class="container">
+            <div class="card">
+                <h2><i class="fas fa-bookmark"></i> Your Saved Jobs</h2>
+                <p>Jobs you've saved for later review</p>
+                
+                <div id="savedJobsResults">
+                    <div class="spinner"></div>
+                    <p style="text-align: center;">Loading your saved jobs...</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Interview Practice Section -->
     <section id="interview" class="section hidden">
         <div class="container">
-            <div class="grid-2">
-                <!-- Left Column - Question Generation -->
-                <div>
-                    <div class="card">
-                        <h2><i class="fas fa-comments"></i> AI Interview Practice</h2>
-                        <p>Practice with AI-generated questions and get instant feedback</p>
+            <div class="card">
+                <h2><i class="fas fa-comments"></i> AI Interview Practice</h2>
+                <p>Get skill-specific questions with AI-powered answer analysis</p>
+                
+                <div class="form-group">
+                    <label>Skills to Practice (comma separated)</label>
+                    <input type="text" id="interviewSkills" placeholder="e.g., Python, JavaScript, React">
+                </div>
+
+                <button class="btn btn-primary btn-full" onclick="generateInterviewQuestions()">
+                    <i class="fas fa-magic"></i> Generate Questions
+                </button>
+
+                <div id="questionSection" class="hidden" style="margin-top: 2rem;">
+                    <div class="card" style="background: #f8fafc;">
+                        <h3 style="color: var(--primary);">Question <span id="questionNumber"></span></h3>
+                        <div id="questionText" style="font-size: 1.2rem; margin: 1rem 0; padding: 1.5rem; background: white; border-radius: 12px; border-left: 4px solid var(--primary);"></div>
                         
-                        <div class="form-group">
-                            <label>Paste Job Description</label>
-                            <textarea id="jobDescription" placeholder="Paste a job description to generate relevant questions..." rows="4"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Or Select Skills to Practice</label>
-                            <div id="skillsContainer" class="skills-input">
-                                <!-- Skills will be populated dynamically -->
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary" style="width: 100%;" onclick="generateInterviewQuestions()">
-                            <i class="fas fa-magic"></i> Generate Questions
-                        </button>
-
-                        <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="loadAutoInterviewQuestions()">
-                            <i class="fas fa-bolt"></i> Auto-generate from Profile
-                        </button>
-                    </div>
-
-                    <!-- Current Question Section -->
-                    <div id="questionSection" class="card hidden">
-                        <h2><i class="fas fa-question-circle"></i> Current Question</h2>
-                        
-                        <div class="question-card active">
-                            <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 1rem;">
-                                <span id="questionSkill" class="skill-badge skill-technical">Skill</span>
-                                <span id="questionDifficulty" class="difficulty-badge difficulty-medium">Medium</span>
-                            </div>
-                            <p id="questionText" style="font-size: 1.1rem; margin-bottom: 1rem;"></p>
-                            <div style="background: #fef3c7; padding: 1rem; border-radius: 8px;">
-                                <p style="margin: 0; color: #92400e;"><strong>Hint:</strong> <span id="questionHint"></span></p>
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <label>Your Answer</label>
-                            <textarea id="answerInput" class="answer-input" placeholder="Type your answer here..."></textarea>
+                            <textarea id="answerInput" rows="8" placeholder="Type your detailed answer here..."></textarea>
                         </div>
 
                         <div style="display: flex; gap: 1rem;">
-                            <button class="btn btn-warning" onclick="skipQuestion()" style="flex: 1;">
-                                <i class="fas fa-forward"></i> Skip
-                            </button>
-                            <button class="btn btn-success" onclick="submitAnswer()" style="flex: 2;">
+                            <button class="btn btn-success" onclick="submitAnswer()" style="flex: 1;">
                                 <i class="fas fa-paper-plane"></i> Submit Answer
                             </button>
-                        </div>
-                    </div>
-
-                    <!-- Questions List -->
-                    <div id="questionsList" class="card hidden">
-                        <h2><i class="fas fa-list"></i> Generated Questions</h2>
-                        <div id="questionsContainer">
-                            <!-- Questions will be populated here -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column - Stats and Analysis -->
-                <div>
-                    <!-- Stats Card -->
-                    <div class="card">
-                        <h2><i class="fas fa-chart-bar"></i> Your Progress</h2>
-                        <div id="statsContent">
-                            <!-- Stats will be loaded here -->
-                        </div>
-                    </div>
-
-                    <!-- Analysis Result -->
-                    <div id="analysisResult" class="card hidden">
-                        <h2><i class="fas fa-chart-line"></i> Analysis Result</h2>
-                        <div id="analysisContent">
-                            <!-- Analysis will be shown here -->
-                        </div>
-                    </div>
-
-                    <!-- Quick Actions -->
-                    <div class="card">
-                        <h2><i class="fas fa-bolt"></i> Quick Actions</h2>
-                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                            <button class="btn btn-info" onclick="viewInterviewHistory()">
-                                <i class="fas fa-history"></i> View Practice History
-                            </button>
-                            <button class="btn btn-secondary" onclick="showSection('job-preparation')">
-                                <i class="fas fa-briefcase"></i> Job Preparation
+                            <button class="btn btn-secondary" onclick="skipQuestion()">
+                                <i class="fas fa-forward"></i> Skip
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Job Preparation Section -->
-    <section id="job-preparation" class="section hidden">
-        <div class="container">
-            <div class="card">
-                <h2><i class="fas fa-briefcase"></i> Job Preparation</h2>
-                <p>Prepare for specific jobs with customized interview questions and notes</p>
-                
-                <div id="jobPrepContent">
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle"></i> 
-                        <span>Select a job from your recommendations to start preparing</span>
-                    </div>
-                    
-                    <button class="btn btn-primary" onclick="showSection('recommendations')">
-                        <i class="fas fa-search"></i> Browse Jobs
-                    </button>
-                </div>
-            </div>
-
-            <div id="preparationHistory" class="card hidden">
-                <h2><i class="fas fa-history"></i> Preparation History</h2>
-                <div id="preparationHistoryContent">
-                    <!-- Preparation history will be loaded here -->
-                </div>
+                <div id="analysisResult" class="hidden" style="margin-top: 2rem;"></div>
             </div>
         </div>
     </section>
@@ -1148,15 +1218,19 @@
         let userSkills = [];
         let currentQuestions = [];
         let currentQuestionIndex = 0;
-        const commonSkills = ['Python', 'JavaScript', 'React', 'SQL', 'Data Science', 'Machine Learning', 'AWS', 'Docker', 'Node.js', 'Java'];
-        let manualSkills = [];
-        let currentJobPreparation = null;
+        let savedJobs = [];
 
         // Alert system
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
             const alertDiv = document.createElement('div');
             alertDiv.className = `alert alert-${type}`;
+            alertDiv.style.position = 'fixed';
+            alertDiv.style.top = '80px';
+            alertDiv.style.left = '50%';
+            alertDiv.style.transform = 'translateX(-50%)';
+            alertDiv.style.zIndex = '10000';
+            alertDiv.style.minWidth = '300px';
             alertDiv.innerHTML = `
                 <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
                 <span>${message}</span>
@@ -1177,46 +1251,25 @@
             document.getElementById(sectionId).classList.remove('hidden');
             window.scrollTo(0, 0);
 
-            if (sectionId === 'interview' && currentUser) {
-                loadInterviewStats();
-                loadSkills();
-            }
-            if (sectionId === 'job-preparation' && currentUser) {
-                loadJobPreparationHistory();
-            }
-            if (sectionId === 'saved-jobs' && currentUser) {
+            // Load saved jobs when showing that section
+            if (sectionId === 'savedJobs' && currentUser) {
                 loadSavedJobs();
-            }
-            if (sectionId === 'profile' && currentUser) {
-                loadUserHistory();
-            }
-            if (sectionId === 'recommendations') {
-                highlightRecommendationBox('ai');
-            }
-        }
-
-        // Highlight recommendation boxes
-        function highlightRecommendationBox(type) {
-            document.querySelectorAll('.recommendation-box').forEach(box => {
-                box.classList.remove('active');
-            });
-            
-            if (type === 'ai') {
-                document.getElementById('aiRecommendationsBox').classList.add('active');
-            } else {
-                document.getElementById('manualSkillsBox').classList.add('active');
             }
         }
 
         // Authentication
         function showAuthTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => {
+                t.classList.remove('active');
+            });
             
             if (tab === 'login') {
+                document.getElementById('loginTab').classList.add('active');
                 document.getElementById('loginForm').classList.remove('hidden');
                 document.getElementById('registerForm').classList.add('hidden');
             } else {
+                document.getElementById('registerTab').classList.add('active');
                 document.getElementById('loginForm').classList.add('hidden');
                 document.getElementById('registerForm').classList.remove('hidden');
             }
@@ -1243,10 +1296,10 @@
                 if (data.success) {
                     currentUser = data.user;
                     userSkills = data.user.skills || [];
-                    
                     updateNavigation();
                     showAlert(`Welcome back, ${data.user.name}!`, 'success');
                     showSection('home');
+                    displayCurrentSkills();
                 } else {
                     showAlert(data.message, 'error');
                 }
@@ -1276,7 +1329,7 @@
                 
                 if (data.success) {
                     showAlert(data.message, 'success');
-                    document.querySelector('.tab').click();
+                    showAuthTab('login');
                     document.getElementById('loginEmail').value = email;
                 } else {
                     showAlert(data.message, 'error');
@@ -1290,7 +1343,7 @@
             await fetch('/api/logout', {method: 'POST'});
             currentUser = null;
             userSkills = [];
-            
+            savedJobs = [];
             updateNavigation();
             showAlert('Logged out successfully', 'info');
             showSection('home');
@@ -1298,11 +1351,9 @@
 
         function updateNavigation() {
             const isLoggedIn = currentUser !== null;
-            
             document.getElementById('loginLink').classList.toggle('hidden', isLoggedIn);
             document.getElementById('profileLink').classList.toggle('hidden', !isLoggedIn);
             document.getElementById('interviewLink').classList.toggle('hidden', !isLoggedIn);
-            document.getElementById('jobPrepLink').classList.toggle('hidden', !isLoggedIn);
             document.getElementById('savedJobsLink').classList.toggle('hidden', !isLoggedIn);
             document.getElementById('logoutLink').classList.toggle('hidden', !isLoggedIn);
         }
@@ -1334,23 +1385,22 @@
 
                 if (data.success) {
                     userSkills = data.data.skills;
-                    
                     resultsDiv.innerHTML = `
                         <div class="card">
                             <h3 style="color: var(--success);"><i class="fas fa-check-circle"></i> Analysis Complete!</h3>
-                            <p>Found ${data.data.total_skills_found} skills</p>
+                            <p>Found ${data.data.skills.length} skills in your resume</p>
                             <div class="job-skills" style="margin-top: 1rem;">
                                 ${data.data.skills.map(skill => 
                                     `<span class="job-skill matched">${skill}</span>`
                                 ).join('')}
                             </div>
                             <button class="btn btn-success" onclick="getAutoRecommendations()" style="margin-top: 1rem;">
-                                <i class="fas fa-briefcase"></i> View Job Matches
+                                <i class="fas fa-briefcase"></i> Find Job Matches
                             </button>
                         </div>
                     `;
-                    showAlert(data.message, 'success');
-                    addUserHistory('Resume Analysis', `Analyzed resume and found ${data.data.total_skills_found} skills`);
+                    showAlert('Resume analyzed successfully!', 'success');
+                    displayCurrentSkills();
                 } else {
                     resultsDiv.innerHTML = `<div class="card"><div class="alert alert-error">${data.message}</div></div>`;
                 }
@@ -1359,53 +1409,77 @@
             }
         }
 
-        // Manual Skills Functions
-        function loadManualSkills() {
-            const container = document.getElementById('manualSkillsContainer');
-            container.innerHTML = '';
-            
-            manualSkills.forEach(skill => {
-                const skillElement = document.createElement('div');
-                skillElement.className = 'skill-tag';
-                skillElement.innerHTML = `
-                    ${skill}
-                    <i class="fas fa-times" onclick="removeManualSkill('${skill}')"></i>
-                `;
-                container.appendChild(skillElement);
-            });
-        }
+        // Manual Skill Addition
+        // Manual Skill Addition - FIXED VERSION
+// Update the addManualSkills function to also update experience
+async function addManualSkills() {
+    const skillsInput = document.getElementById('manualSkills').value;
+    const experience = document.getElementById('experienceLevel').value;
 
-        function addManualSkill() {
-            const skillInput = document.getElementById('manualSkillInput');
-            const skill = skillInput.value.trim();
-            
-            if (!skill) {
-                showAlert('Please enter a skill', 'error');
-                return;
-            }
-            
-            // Handle comma-separated skills
-            if (skill.includes(',')) {
-                const skills = skill.split(',').map(s => s.trim()).filter(s => s);
-                skills.forEach(s => {
-                    if (s && !manualSkills.includes(s)) {
-                        manualSkills.push(s);
-                    }
-                });
-            } else {
-                if (!manualSkills.includes(skill)) {
-                    manualSkills.push(skill);
-                }
-            }
-            
-            skillInput.value = '';
-            loadManualSkills();
-            highlightRecommendationBox('manual');
-        }
+    if (!skillsInput.trim()) {
+        showAlert('Please enter at least one skill', 'error');
+        return;
+    }
 
-        function removeManualSkill(skill) {
-            manualSkills = manualSkills.filter(s => s !== skill);
-            loadManualSkills();
+    const skills = skillsInput.split(',').map(s => s.trim()).filter(s => s);
+
+    try {
+        // First update skills
+        const skillsResponse = await fetch('/api/add-manual-skills', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ 
+                skills: skills,
+                experience: experience 
+            })
+        });
+
+        const skillsData = await skillsResponse.json();
+
+        if (skillsData.success) {
+            userSkills = skillsData.all_skills;
+            showAlert(`Added ${skills.length} skills successfully!`, 'success');
+            document.getElementById('manualSkills').value = '';
+            displayCurrentSkills();
+            document.getElementById('currentSkills').classList.remove('hidden');
+        } else {
+            showAlert(skillsData.message, 'error');
+        }
+    } catch (error) {
+        console.error('Add skills error:', error);
+        showAlert('Failed to add skills', 'error');
+    }
+}
+
+// Function to update experience separately
+async function updateExperience() {
+    const experience = document.getElementById('experienceLevel').value;
+    
+    try {
+        const response = await fetch('/api/update-experience', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ experience: experience })
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            showAlert('Experience level updated!', 'success');
+        }
+    } catch (error) {
+        console.error('Update experience error:', error);
+    }
+}
+
+// Add event listener for experience changes
+document.getElementById('experienceLevel').addEventListener('change', updateExperience);
+        function displayCurrentSkills() {
+            if (userSkills.length > 0) {
+                document.getElementById('currentSkills').classList.remove('hidden');
+                document.getElementById('skillsList').innerHTML = userSkills.map(skill => 
+                    `<span class="skill-tag">${skill}</span>`
+                ).join('');
+            }
         }
 
         // Job Recommendations
@@ -1417,19 +1491,17 @@
             }
 
             const resultsDiv = document.getElementById('recommendationsResults');
-            resultsDiv.innerHTML = '<div class="card"><div class="spinner"></div><p style="text-align: center;">Finding matches with Sentence-BERT...</p></div>';
+            resultsDiv.innerHTML = '<div class="card"><div class="spinner"></div><p style="text-align: center;">Finding matches with AI...</p></div>';
 
             showSection('recommendations');
-            highlightRecommendationBox('ai');
 
             try {
                 const response = await fetch('/api/auto-recommendations');
                 const data = await response.json();
 
                 if (data.success) {
-                    displayRecommendations(data.recommendations, data);
-                    showAlert(`Found ${data.recommendations.length} matches (${data.matching_method})`, 'success');
-                    addUserHistory('Job Search', `Found ${data.recommendations.length} job matches using ${data.matching_method}`);
+                    displayRecommendations(data.recommendations);
+                    showAlert(`Found ${data.recommendations.length} job matches!`, 'success');
                 } else {
                     resultsDiv.innerHTML = `<div class="card"><div class="alert alert-error">${data.message}</div></div>`;
                 }
@@ -1438,86 +1510,45 @@
             }
         }
 
-        async function getManualRecommendations() {
-            if (manualSkills.length === 0) {
-                showAlert('Please add at least one skill', 'error');
-                return;
-            }
-
-            const experience = document.getElementById('manualExperience').value;
-            const resultsDiv = document.getElementById('recommendationsResults');
-            resultsDiv.innerHTML = '<div class="card"><div class="spinner"></div><p style="text-align: center;">Finding matches for your skills...</p></div>';
-
-            highlightRecommendationBox('manual');
-
-            try {
-                const response = await fetch('/api/recommendations', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        skills: manualSkills,
-                        experience: experience
-                    })
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    displayRecommendations(data.recommendations, {matching_method: 'Manual Skills'});
-                    showAlert(`Found ${data.recommendations.length} matches for your skills`, 'success');
-                    addUserHistory('Manual Job Search', `Found ${data.recommendations.length} job matches using manual skills`);
-                } else {
-                    resultsDiv.innerHTML = `<div class="card"><div class="alert alert-error">${data.message}</div></div>`;
-                }
-            } catch (error) {
-                resultsDiv.innerHTML = '<div class="card"><div class="alert alert-error">Failed to load recommendations</div></div>';
-            }
-        }
-
-        function displayRecommendations(jobs, metadata = {}) {
+        function displayRecommendations(jobs) {
             const resultsDiv = document.getElementById('recommendationsResults');
             
             if (jobs.length === 0) {
-                resultsDiv.innerHTML = '<div class="card"><p style="text-align: center;">No matches found</p></div>';
+                resultsDiv.innerHTML = '<div class="card"><p style="text-align: center;">No matches found. Try adding your skills first.</p></div>';
                 return;
             }
 
-            let headerHTML = '';
-            if (metadata.api_results) {
-                headerHTML = `
-                    <div class="card" style="background: linear-gradient(135deg, var(--info), #2563eb); color: white;">
-                        <h3 style="color: white;"><i class="fas fa-satellite-dish"></i> Live Job Results</h3>
-                        <p>Fetched ${metadata.api_results} real jobs from APIs • ${metadata.matching_method} matching</p>
-                    </div>
-                `;
-            } else if (metadata.matching_method === 'Manual Skills') {
-                headerHTML = `
-                    <div class="card" style="background: linear-gradient(135deg, var(--success), #059669); color: white;">
-                        <h3 style="color: white;"><i class="fas fa-user-edit"></i> Manual Skills Search</h3>
-                        <p>Found ${jobs.length} jobs matching your skills</p>
-                    </div>
-                `;
-            }
-
-            resultsDiv.innerHTML = headerHTML + jobs.map(job => `
+            resultsDiv.innerHTML = jobs.map(job => `
                 <div class="job-card">
-                    <div class="job-header">
+                    <div class="save-job-btn ${isJobSaved(job.id) ? 'saved' : ''}" onclick="toggleSaveJob('${job.id}', this)">
+                        <i class="fas ${isJobSaved(job.id) ? 'fa-bookmark' : 'fa-bookmark'}"></i>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
                         <div>
-                            <div class="job-title">${job.title}</div>
-                            <div class="job-company"><i class="fas fa-building"></i> ${job.company}</div>
-                            ${job.source ? `<span class="job-source-badge ${job.source.toLowerCase().includes('api') || job.source === 'Adzuna' || job.source === 'JSearch' ? 'source-api' : 'source-db'}">
-                                <i class="fas fa-${job.source.toLowerCase().includes('api') || job.source === 'Adzuna' || job.source === 'JSearch' ? 'globe' : 'database'}"></i> ${job.source}
-                            </span>` : ''}
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">${job.title}</div>
+                            <div style="color: var(--primary); font-size: 1.2rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-building"></i> ${job.company}
+                            </div>
+                            <span style="display: inline-block; padding: 0.4rem 0.8rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600; background: #e0e7ff; color: var(--primary);">
+                                <i class="fas fa-globe"></i> ${job.source}
+                            </span>
                         </div>
                         <div class="match-score">
                             <i class="fas fa-star"></i> ${job.match_score}% Match
                         </div>
                     </div>
                     
-                    <div class="job-details">
-                        <div class="job-detail-item"><i class="fas fa-map-marker-alt"></i> ${job.location}</div>
-                        <div class="job-detail-item"><i class="fas fa-briefcase"></i> ${job.type}</div>
-                        <div class="job-detail-item"><i class="fas fa-dollar-sign"></i> ${job.salary}</div>
+                    <div style="display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: #6b7280;">
+                            <i class="fas fa-map-marker-alt"></i> ${job.location}
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: #6b7280;">
+                            <i class="fas fa-briefcase"></i> ${job.type}
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: #6b7280;">
+                            <i class="fas fa-dollar-sign"></i> ${job.salary}
+                        </div>
                     </div>
                     
                     <p style="margin: 1rem 0; color: #4b5563;">${job.description}</p>
@@ -1530,71 +1561,258 @@
                         }).join('')}
                     </div>
                     
-                    <div class="job-actions">
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
                         ${job.url ? `
-                            <a href="${job.url}" target="_blank" class="btn btn-info">
-                                <i class="fas fa-external-link-alt"></i> Apply on Site
+                            <a href="${job.url}" target="_blank" class="btn btn-info" style="flex: 1; min-width: 160px;">
+                                <i class="fas fa-external-link-alt"></i> Apply Now
                             </a>
                         ` : ''}
-                        <button class="btn btn-warning" onclick="startJobPreparation('${job.id || job.title + '-' + job.company}', '${job.title}', '${job.company}', '${job.description.replace(/'/g, "\\'")}', '${job.skills.join(',')}')">
-                            <i class="fas fa-briefcase"></i> Prepare for Interview
+                        <button class="btn btn-warning" onclick="prepareForInterview('${job.title.replace(/'/g, "\\'")}', '${job.company.replace(/'/g, "\\'")}', '${job.skills.join(',').replace(/'/g, "\\'")}')">
+                            <i class="fas fa-briefcase"></i> Practice Interview
                         </button>
-                        ${currentUser ? `
-                            <button class="btn btn-secondary" onclick="saveJob('${job.id || job.title + '-' + job.company}', '${job.title}', '${job.company}')">
-                                <i class="fas fa-bookmark"></i> Save Job
-                            </button>
-                        ` : ''}
                     </div>
                 </div>
             `).join('');
         }
 
-        // Saved Jobs Functions
-        function saveJob(jobId, jobTitle, company) {
+        // Search jobs by specific skill
+async function searchJobsBySkill() {
+    if (!currentUser) {
+        showAlert('Please login first', 'error');
+        showSection('login');
+        return;
+    }
+
+    const skillInput = document.getElementById('skillSearch').value.trim();
+    
+    if (!skillInput) {
+        showAlert('Please enter a skill to search for', 'error');
+        return;
+    }
+
+    const resultsDiv = document.getElementById('recommendationsResults');
+    resultsDiv.innerHTML = '<div class="card"><div class="spinner"></div><p style="text-align: center;">Searching jobs for: ' + skillInput + '</p></div>';
+
+    showSection('recommendations');
+
+    try {
+        // Use the same auto-recommendations endpoint but with search skills
+        const response = await fetch('/api/auto-recommendations');
+        const data = await response.json();
+
+        if (data.success) {
+            // Filter jobs based on the search skill
+            const searchSkills = skillInput.toLowerCase().split(',').map(s => s.trim());
+            const filteredJobs = data.recommendations.filter(job => {
+                const jobText = (job.title + ' ' + job.description + ' ' + job.skills.join(' ')).toLowerCase();
+                return searchSkills.some(skill => jobText.includes(skill.toLowerCase()));
+            });
+
+            // Show search results header
+            document.getElementById('searchResultsHeader').classList.remove('hidden');
+            document.getElementById('searchQueryText').textContent = 
+                `Found ${filteredJobs.length} jobs matching: "${skillInput}"`;
+
+            displayRecommendations(filteredJobs, true);
+            showAlert(`Found ${filteredJobs.length} jobs matching your search!`, 'success');
+        } else {
+            resultsDiv.innerHTML = `<div class="card"><div class="alert alert-error">${data.message}</div></div>`;
+        }
+    } catch (error) {
+        resultsDiv.innerHTML = '<div class="card"><div class="alert alert-error">Failed to search jobs</div></div>';
+    }
+}
+
+// Enhanced displayRecommendations function with search support
+function displayRecommendations(jobs, isSearch = false) {
+    const resultsDiv = document.getElementById('recommendationsResults');
+    
+    if (jobs.length === 0) {
+        const noResultsMessage = isSearch ? 
+            'No jobs found matching your search. Try different keywords or browse all recommendations.' :
+            'No matches found. Try adding your skills first or use the search feature.';
+        
+        resultsDiv.innerHTML = `
+            <div class="card" style="text-align: center; padding: 3rem;">
+                <i class="fas fa-search" style="font-size: 4rem; color: var(--border); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--dark); margin-bottom: 1rem;">No Jobs Found</h3>
+                <p style="color: #6b7280; margin-bottom: 2rem;">${noResultsMessage}</p>
+                ${isSearch ? `
+                    <button class="btn btn-primary" onclick="getAutoRecommendations()">
+                        <i class="fas fa-briefcase"></i> Browse All Jobs
+                    </button>
+                ` : `
+                    <button class="btn btn-primary" onclick="showSection('profile')">
+                        <i class="fas fa-user-plus"></i> Add Your Skills
+                    </button>
+                `}
+            </div>
+        `;
+        return;
+    }
+
+    resultsDiv.innerHTML = jobs.map(job => `
+        <div class="job-card">
+            <div class="save-job-btn ${isJobSaved(job.id) ? 'saved' : ''}" onclick="toggleSaveJob('${job.id}', this)">
+                <i class="fas ${isJobSaved(job.id) ? 'fa-bookmark' : 'fa-bookmark'}"></i>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">${job.title}</div>
+                    <div style="color: var(--primary); font-size: 1.2rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-building"></i> ${job.company}
+                    </div>
+                    <span style="display: inline-block; padding: 0.4rem 0.8rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600; background: #e0e7ff; color: var(--primary);">
+                        <i class="fas fa-globe"></i> ${job.source}
+                    </span>
+                </div>
+                <div class="match-score">
+                    <i class="fas fa-star"></i> ${job.match_score}% Match
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; color: #6b7280;">
+                    <i class="fas fa-map-marker-alt"></i> ${job.location}
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; color: #6b7280;">
+                    <i class="fas fa-briefcase"></i> ${job.type}
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; color: #6b7280;">
+                    <i class="fas fa-dollar-sign"></i> ${job.salary}
+                </div>
+            </div>
+            
+            <p style="margin: 1rem 0; color: #4b5563;">${job.description}</p>
+            
+            <div class="job-skills">
+                ${job.skills.map(skill => {
+                    const isMatched = job.matching_skills && 
+                                   job.matching_skills.map(s => s.toLowerCase()).includes(skill.toLowerCase());
+                    return `<span class="job-skill ${isMatched ? 'matched' : ''}">${skill}</span>`;
+                }).join('')}
+            </div>
+            
+            <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+                ${job.url ? `
+                    <a href="${job.url}" target="_blank" class="btn btn-info" style="flex: 1; min-width: 160px;">
+                        <i class="fas fa-external-link-alt"></i> Apply Now
+                    </a>
+                ` : ''}
+                <button class="btn btn-warning" onclick="prepareForInterview('${job.title.replace(/'/g, "\\'")}', '${job.company.replace(/'/g, "\\'")}', '${job.skills.join(',').replace(/'/g, "\\'")}')">
+                    <i class="fas fa-briefcase"></i> Practice Interview
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Clear search and show all recommendations
+function clearSearch() {
+    document.getElementById('skillSearch').value = '';
+    document.getElementById('searchResultsHeader').classList.add('hidden');
+    getAutoRecommendations();
+}
+
+// Add keyboard support for search
+document.getElementById('skillSearch')?.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        searchJobsBySkill();
+    }
+});
+
+        // Saved Jobs Functionality
+        function isJobSaved(jobId) {
+            return savedJobs.some(job => job.id === jobId);
+        }
+
+        async function toggleSaveJob(jobId, button) {
             if (!currentUser) {
                 showAlert('Please login to save jobs', 'error');
                 return;
             }
 
-            const savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '{}');
-            const userSavedJobs = savedJobs[currentUser.email] || [];
-            
-            // Check if job already saved
-            if (userSavedJobs.some(job => job.id === jobId)) {
-                showAlert('Job already saved!', 'info');
-                return;
-            }
-
-            userSavedJobs.push({
+            const jobCard = button.closest('.job-card');
+            const jobData = {
                 id: jobId,
-                title: jobTitle,
-                company: company,
-                savedAt: new Date().toISOString()
-            });
+                title: jobCard.querySelector('div:first-child div:first-child').textContent,
+                company: jobCard.querySelector('div:first-child div:nth-child(2)').textContent,
+                location: jobCard.querySelector('div:nth-child(3) > div:first-child').textContent,
+                type: jobCard.querySelector('div:nth-child(3) > div:nth-child(2)').textContent,
+                salary: jobCard.querySelector('div:nth-child(3) > div:nth-child(3)').textContent,
+                description: jobCard.querySelector('p').textContent,
+                skills: Array.from(jobCard.querySelectorAll('.job-skill')).map(skill => skill.textContent),
+                match_score: parseInt(jobCard.querySelector('.match-score').textContent),
+                url: jobCard.querySelector('a') ? jobCard.querySelector('a').href : ''
+            };
 
-            savedJobs[currentUser.email] = userSavedJobs;
-            localStorage.setItem('savedJobs', JSON.stringify(savedJobs));
-            
-            showAlert('Job saved successfully!', 'success');
-            event.target.innerHTML = '<i class="fas fa-check"></i> Saved';
-            event.target.disabled = true;
-            addUserHistory('Job Saved', `Saved "${jobTitle}" at ${company}`);
+            try {
+                if (isJobSaved(jobId)) {
+                    // Remove from saved
+                    const response = await fetch('/api/jobs/remove-saved', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ job_id: jobId })
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        savedJobs = savedJobs.filter(job => job.id !== jobId);
+                        button.classList.remove('saved');
+                        showAlert('Job removed from saved', 'info');
+                    }
+                } else {
+                    // Save job
+                    const response = await fetch('/api/jobs/save', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ job: jobData })
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        savedJobs.push(jobData);
+                        button.classList.add('saved');
+                        showAlert('Job saved successfully!', 'success');
+                    }
+                }
+            } catch (error) {
+                showAlert('Failed to update saved jobs', 'error');
+            }
         }
 
-        function loadSavedJobs() {
+        async function loadSavedJobs() {
             if (!currentUser) return;
 
-            const savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '{}');
-            const userSavedJobs = savedJobs[currentUser.email] || [];
-            const container = document.getElementById('savedJobsResults');
+            const resultsDiv = document.getElementById('savedJobsResults');
+            resultsDiv.innerHTML = '<div class="spinner"></div><p style="text-align: center;">Loading your saved jobs...</p>';
 
-            if (userSavedJobs.length === 0) {
-                container.innerHTML = `
+            try {
+                const response = await fetch('/api/jobs/saved');
+                const data = await response.json();
+
+                if (data.success) {
+                    savedJobs = data.saved_jobs;
+                    displaySavedJobs(data.saved_jobs);
+                } else {
+                    resultsDiv.innerHTML = `<div class="alert alert-error">${data.message}</div>`;
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = '<div class="alert alert-error">Failed to load saved jobs</div>';
+            }
+        }
+
+        function displaySavedJobs(jobs) {
+            const resultsDiv = document.getElementById('savedJobsResults');
+            
+            if (jobs.length === 0) {
+                resultsDiv.innerHTML = `
                     <div class="card" style="text-align: center; padding: 3rem;">
-                        <i class="fas fa-bookmark" style="font-size: 3rem; color: #d1d5db; margin-bottom: 1rem;"></i>
-                        <h3>No Saved Jobs Yet</h3>
-                        <p style="color: #6b7280;">Save jobs you're interested in to find them here later</p>
-                        <button class="btn btn-primary" onclick="showSection('recommendations')" style="margin-top: 1rem;">
+                        <i class="fas fa-bookmark" style="font-size: 4rem; color: var(--border); margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--dark); margin-bottom: 1rem;">No Saved Jobs Yet</h3>
+                        <p style="color: #6b7280; margin-bottom: 2rem;">Start browsing jobs and save your favorites!</p>
+                        <button class="btn btn-primary" onclick="showSection('recommendations')">
                             <i class="fas fa-search"></i> Browse Jobs
                         </button>
                     </div>
@@ -1602,138 +1820,123 @@
                 return;
             }
 
-            container.innerHTML = userSavedJobs.map(job => `
-                <div class="job-card">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">${job.title}</div>
-                            <div class="job-company"><i class="fas fa-building"></i> ${job.company}</div>
+            resultsDiv.innerHTML = `
+                <div class="saved-jobs-grid">
+                    ${jobs.map(job => `
+                        <div class="saved-job-card">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="color: var(--dark); margin-bottom: 0.5rem;">${job.title}</h4>
+                                    <p style="color: var(--primary); font-weight: 600;"><i class="fas fa-building"></i> ${job.company}</p>
+                                </div>
+                                <div class="match-score" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+                                    ${job.match_score || 'N/A'}%
+                                </div>
+                            </div>
+                            
+                            <div style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">
+                                <div><i class="fas fa-map-marker-alt"></i> ${job.location}</div>
+                                <div><i class="fas fa-dollar-sign"></i> ${job.salary}</div>
+                                <div style="margin-top: 0.5rem; font-size: 0.8rem;">Saved on ${new Date(job.saved_date).toLocaleDateString()}</div>
+                            </div>
+                            
+                            <div class="job-skills" style="margin: 1rem 0;">
+                                ${job.skills ? job.skills.slice(0, 4).map(skill => 
+                                    `<span class="job-skill">${skill}</span>`
+                                ).join('') : ''}
+                            </div>
+                            
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                ${job.url ? `
+                                    <a href="${job.url}" target="_blank" class="btn btn-info" style="flex: 1; padding: 0.5rem; font-size: 0.9rem;">
+                                        <i class="fas fa-external-link-alt"></i> Apply
+                                    </a>
+                                ` : ''}
+                                <button class="remove-saved-btn" onclick="removeSavedJob('${job.id}')">
+                                    <i class="fas fa-trash"></i> Remove
+                                </button>
+                            </div>
                         </div>
-                        <span class="match-score" style="background: var(--secondary);">
-                            <i class="fas fa-bookmark"></i> Saved
-                        </span>
-                    </div>
-                    <div class="job-details">
-                        <div class="job-detail-item">
-                            <i class="fas fa-calendar"></i> Saved ${new Date(job.savedAt).toLocaleDateString()}
-                        </div>
-                    </div>
-                    <div class="job-actions">
-                        <button class="btn btn-warning" onclick="removeSavedJob('${job.id}')">
-                            <i class="fas fa-trash"></i> Remove
-                        </button>
-                        <button class="btn btn-primary" onclick="showSection('recommendations')">
-                            <i class="fas fa-search"></i> Find Similar
-                        </button>
-                    </div>
+                    `).join('')}
                 </div>
-            `).join('');
+            `;
         }
 
-        function removeSavedJob(jobId) {
-            const savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '{}');
-            const userSavedJobs = savedJobs[currentUser.email] || [];
-            
-            const updatedJobs = userSavedJobs.filter(job => job.id !== jobId);
-            savedJobs[currentUser.email] = updatedJobs;
-            localStorage.setItem('savedJobs', JSON.stringify(savedJobs));
-            
-            showAlert('Job removed from saved list', 'success');
-            loadSavedJobs();
+        // Delete a skill
+async function deleteSkill(skill) {
+    try {
+        const response = await fetch('/api/delete-skill', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ skill: skill })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            userSkills = data.all_skills;
+            showAlert(`Skill '${skill}' deleted successfully!`, 'success');
+            displayCurrentSkills();
+        } else {
+            showAlert(data.message, 'error');
         }
+    } catch (error) {
+        console.error('Delete skill error:', error);
+        showAlert('Failed to delete skill', 'error');
+    }
+}
 
-        // User History Functions
-        function addUserHistory(type, description) {
-            if (!currentUser) return;
+// Update displayCurrentSkills to include delete buttons
+function displayCurrentSkills() {
+    if (userSkills.length > 0) {
+        document.getElementById('currentSkills').classList.remove('hidden');
+        document.getElementById('skillsList').innerHTML = userSkills.map(skill => 
+            `<span class="skill-tag">
+                ${skill}
+                <span class="remove" onclick="deleteSkill('${skill}')">
+                    <i class="fas fa-times"></i>
+                </span>
+            </span>`
+        ).join('');
+    }
+}
 
-            const userHistory = JSON.parse(localStorage.getItem('userHistory') || '{}');
-            const userHistoryItems = userHistory[currentUser.email] || [];
-            
-            userHistoryItems.unshift({
-                type: type,
-                description: description,
-                timestamp: new Date().toISOString()
-            });
+        async function removeSavedJob(jobId) {
+            try {
+                const response = await fetch('/api/jobs/remove-saved', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ job_id: jobId })
+                });
 
-            // Keep only last 20 items
-            if (userHistoryItems.length > 20) {
-                userHistoryItems.pop();
+                const data = await response.json();
+                if (data.success) {
+                    savedJobs = savedJobs.filter(job => job.id !== jobId);
+                    loadSavedJobs();
+                    showAlert('Job removed from saved', 'info');
+                } else {
+                    showAlert(data.message, 'error');
+                }
+            } catch (error) {
+                showAlert('Failed to remove job', 'error');
             }
-
-            userHistory[currentUser.email] = userHistoryItems;
-            localStorage.setItem('userHistory', JSON.stringify(userHistory));
-            loadUserHistory();
         }
 
-        function loadUserHistory() {
-            if (!currentUser) return;
-
-            const userHistory = JSON.parse(localStorage.getItem('userHistory') || '{}');
-            const userHistoryItems = userHistory[currentUser.email] || [];
-            const container = document.getElementById('userHistory');
-
-            if (userHistoryItems.length === 0) {
-                container.innerHTML = `
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Your activity history will appear here as you use the platform</span>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = userHistoryItems.map(item => `
-                <div class="history-item">
-                    <div class="history-header">
-                        <strong>${item.type}</strong>
-                        <span class="history-type">${new Date(item.timestamp).toLocaleDateString()}</span>
-                    </div>
-                    <p style="margin: 0; color: #6b7280;">${item.description}</p>
-                </div>
-            `).join('');
-        }
-
-        // Interview Practice Functions
-        function loadSkills() {
-            const container = document.getElementById('skillsContainer');
-            container.innerHTML = '';
-            
-            commonSkills.forEach(skill => {
-                const skillElement = document.createElement('div');
-                skillElement.className = 'skill-tag';
-                skillElement.innerHTML = `
-                    ${skill}
-                    <i class="fas fa-times" onclick="this.parentElement.remove()"></i>
-                `;
-                container.appendChild(skillElement);
-            });
-        }
-
-        function getSelectedSkills() {
-            const selected = [];
-            document.querySelectorAll('#skillsContainer .skill-tag').forEach(tag => {
-                selected.push(tag.textContent.trim());
-            });
-            return selected;
-        }
-
+        // Interview Practice
         async function generateInterviewQuestions() {
-            const jobDescription = document.getElementById('jobDescription').value;
-            const selectedSkills = getSelectedSkills();
+            const skillsInput = document.getElementById('interviewSkills').value;
+            const skills = skillsInput.split(',').map(s => s.trim()).filter(s => s);
 
-            if (!jobDescription && selectedSkills.length === 0) {
-                showAlert('Please provide a job description or select skills', 'error');
+            if (skills.length === 0) {
+                showAlert('Please enter some skills', 'error');
                 return;
             }
 
             try {
-                const response = await fetch('/api/generate-interview-questions', {
+                const response = await fetch('/api/interview/questions', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        job_description: jobDescription,
-                        skills: selectedSkills
-                    })
+                    body: JSON.stringify({ skills: skills })
                 });
 
                 const data = await response.json();
@@ -1741,84 +1944,42 @@
                 if (data.success) {
                     currentQuestions = data.questions;
                     currentQuestionIndex = 0;
-                    showQuestionsList();
                     showNextQuestion();
-                    showAlert(`Generated ${data.total_questions} questions`, 'success');
-                    addUserHistory('Interview Practice', `Generated ${data.total_questions} practice questions`);
+                    showAlert(`Generated ${data.questions.length} practice questions`, 'success');
                 } else {
-                    showAlert('Failed to generate questions: ' + data.message, 'error');
+                    showAlert('Failed to generate questions', 'error');
                 }
             } catch (error) {
                 showAlert('Failed to generate questions', 'error');
             }
         }
 
-        async function loadAutoInterviewQuestions() {
-            try {
-                const response = await fetch('/api/auto-interview-questions');
-                const data = await response.json();
-
-                if (data.success) {
-                    currentQuestions = data.questions;
-                    currentQuestionIndex = 0;
-                    showQuestionsList();
-                    showNextQuestion();
-                    showAlert(`Generated ${data.total_questions} questions from your profile`, 'success');
-                    addUserHistory('Interview Practice', `Auto-generated ${data.total_questions} questions from profile`);
-                } else {
-                    showAlert('Please upload your resume first to use this feature', 'error');
-                }
-            } catch (error) {
-                showAlert('Failed to load questions from profile', 'error');
-            }
-        }
-
-        function showQuestionsList() {
-            const container = document.getElementById('questionsContainer');
-            container.innerHTML = '';
-
-            currentQuestions.forEach((question, index) => {
-                const questionElement = document.createElement('div');
-                questionElement.className = 'question-card';
-                questionElement.innerHTML = `
-                    <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 0.5rem;">
-                        <span class="skill-badge skill-${question.category.toLowerCase()}">${question.skill}</span>
-                        <span class="difficulty-badge difficulty-${question.difficulty.toLowerCase()}">${question.difficulty}</span>
-                    </div>
-                    <p style="font-size: 0.95rem; margin: 0;">${question.question}</p>
-                `;
-                questionElement.onclick = () => showQuestion(index);
-                container.appendChild(questionElement);
-            });
-
-            document.getElementById('questionsList').classList.remove('hidden');
-        }
-
-        function showQuestion(index) {
-            currentQuestionIndex = index;
-            const question = currentQuestions[index];
-
-            document.getElementById('questionSkill').textContent = question.skill;
-            document.getElementById('questionSkill').className = `skill-badge skill-${question.category.toLowerCase()}`;
-            document.getElementById('questionDifficulty').textContent = question.difficulty;
-            document.getElementById('questionDifficulty').className = `difficulty-badge difficulty-${question.difficulty.toLowerCase()}`;
-            document.getElementById('questionText').textContent = question.question;
-            document.getElementById('questionHint').textContent = question.hints ? question.hints[0] : 'Think about your personal experience and be specific.';
-
-            document.getElementById('answerInput').value = '';
-            document.getElementById('questionSection').classList.remove('hidden');
-            document.getElementById('analysisResult').classList.add('hidden');
-        }
-
         function showNextQuestion() {
-            if (currentQuestionIndex < currentQuestions.length - 1) {
-                showQuestion(currentQuestionIndex + 1);
+            if (currentQuestionIndex < currentQuestions.length) {
+                const question = currentQuestions[currentQuestionIndex];
+                document.getElementById('questionNumber').textContent = `${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+                document.getElementById('questionText').innerHTML = `
+                    <div style="margin-bottom: 1rem;">
+                        <span style="background: var(--gradient); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600; margin-right: 0.5rem;">
+                            ${question.skill}
+                        </span>
+                        <span style="background: #f59e0b; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;">
+                            ${question.difficulty}
+                        </span>
+                    </div>
+                    ${question.question}
+                `;
+                document.getElementById('answerInput').value = '';
+                document.getElementById('questionSection').classList.remove('hidden');
+                document.getElementById('analysisResult').classList.add('hidden');
             } else {
-                showAlert('You have completed all questions!', 'success');
+                showAlert('All questions completed! Great job!', 'success');
+                document.getElementById('questionSection').classList.add('hidden');
             }
         }
 
         function skipQuestion() {
+            currentQuestionIndex++;
             showNextQuestion();
         }
 
@@ -1829,10 +1990,15 @@
                 return;
             }
 
+            if (answer.split(' ').length < 10) {
+                showAlert('Please provide a more detailed answer (at least 10 words)', 'error');
+                return;
+            }
+
             const question = currentQuestions[currentQuestionIndex];
 
             try {
-                const response = await fetch('/api/submit-interview-answer', {
+                const response = await fetch('/api/interview/analyze', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
@@ -1846,10 +2012,8 @@
 
                 if (data.success) {
                     showAnalysis(data.analysis);
-                    loadInterviewStats();
-                    addUserHistory('Interview Answer', `Answered ${question.skill} question - Score: ${data.analysis.score}%`);
                 } else {
-                    showAlert('Failed to analyze answer: ' + data.message, 'error');
+                    showAlert('Failed to analyze answer', 'error');
                 }
             } catch (error) {
                 showAlert('Failed to analyze answer', 'error');
@@ -1857,221 +2021,82 @@
         }
 
         function showAnalysis(analysis) {
-            const container = document.getElementById('analysisContent');
+            const container = document.getElementById('analysisResult');
             const scoreClass = analysis.score >= 80 ? 'score-excellent' : 
                              analysis.score >= 60 ? 'score-good' : 'score-poor';
             
-            container.innerHTML = `
-                <div style="text-align: center; margin-bottom: 1.5rem;">
-                    <div class="score-circle ${scoreClass}">${analysis.score}</div>
-                    <h3 style="margin: 0;">Overall Score</h3>
-                </div>
-                
-                <div style="margin-bottom: 1.5rem;">
-                    <h4 style="margin-bottom: 0.5rem;">Feedback</h4>
-                    <p style="margin: 0;">${analysis.feedback}</p>
-                </div>
-                
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-value">${analysis.word_count}</div>
-                        <div class="stat-label">Words</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">${analysis.keywords_found?.length || 0}</div>
-                        <div class="stat-label">Tech Terms</div>
-                    </div>
-                </div>
-                
-                <button class="btn btn-primary" onclick="showNextQuestion()" style="width: 100%; margin-top: 1rem;">
-                    Next Question
-                </button>
-            `;
-
-            document.getElementById('analysisResult').classList.remove('hidden');
-        }
-
-        async function loadInterviewStats() {
-            try {
-                const response = await fetch('/api/interview-stats');
-                const data = await response.json();
-
-                if (data.success) {
-                    displayInterviewStats(data.stats);
-                }
-            } catch (error) {
-                console.error('Error loading interview stats:', error);
-            }
-        }
-
-        function displayInterviewStats(stats) {
-            const container = document.getElementById('statsContent');
+            const scoreLabel = analysis.score >= 80 ? 'Excellent!' : 
+                             analysis.score >= 60 ? 'Good!' : 'Needs Improvement';
             
             container.innerHTML = `
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-value">${stats.total_attempts || 0}</div>
-                        <div class="stat-label">Total Practices</div>
+                <div class="card" style="background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);">
+                    <h3 style="color: var(--primary);"><i class="fas fa-chart-line"></i> AI Analysis Result</h3>
+                    <div style="text-align: center; margin: 2rem 0;">
+                        <div class="score-circle ${scoreClass}" style="margin: 0 auto;">${analysis.score}</div>
+                        <h4 style="margin: 1rem 0; color: var(--dark);">${scoreLabel}</h4>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value">${stats.average_score || 0}</div>
-                        <div class="stat-label">Avg Score</div>
-                    </div>
-                </div>
-                
-                ${stats.skill_stats && stats.skill_stats.length > 0 ? `
-                    <div style="margin-top: 1rem;">
-                        <h4 style="margin-bottom: 0.5rem;">Skill Performance</h4>
-                        ${stats.skill_stats.map(skill => `
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; padding: 0.5rem; background: #f8fafc; border-radius: 8px;">
-                                <span>${skill.skill}</span>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <span style="font-weight: bold; color: ${skill.average_score >= 70 ? '#10b981' : skill.average_score >= 50 ? '#f59e0b' : '#ef4444'}">
-                                        ${skill.average_score}
-                                    </span>
-                                    <small style="color: #6b7280;">(${skill.attempts})</small>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                ` : '<p style="text-align: center; color: #6b7280;">No practice data yet</p>'}
-            `;
-        }
-
-        function viewInterviewHistory() {
-            showAlert('Interview history feature coming soon!', 'info');
-        }
-
-        // Job Preparation Functions - FIXED FOR API JOBS
-        async function startJobPreparation(jobId, jobTitle, company, description, skills = '') {
-            try {
-                // Store current job preparation data
-                currentJobPreparation = {
-                    jobId: jobId,
-                    jobTitle: jobTitle,
-                    company: company,
-                    description: description,
-                    skills: skills
-                };
-
-                const response = await fetch('/api/start-job-preparation', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        job_id: jobId,
-                        job_title: jobTitle,
-                        company: company,
-                        job_description: description,
-                        skills: skills
-                    })
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    showAlert(`Job preparation started for ${jobTitle} at ${company}!`, 'success');
-                    showSection('interview');
                     
-                    // Pre-fill the interview form with job-specific questions
-                    document.getElementById('jobDescription').value = description;
-                    currentQuestions = data.questions;
-                    currentQuestionIndex = 0;
-                    showQuestionsList();
-                    showNextQuestion();
-                    addUserHistory('Job Preparation', `Started preparation for "${jobTitle}" at ${company}`);
-                } else {
-                    showAlert('Failed to start job preparation: ' + data.message, 'error');
-                }
-            } catch (error) {
-                showAlert('Failed to start job preparation', 'error');
-            }
-        }
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border-left: 4px solid var(--primary);">
+                        <h4 style="margin-bottom: 1rem; color: var(--primary);"><i class="fas fa-comment-dots"></i> AI Feedback</h4>
+                        <p style="line-height: 1.8; white-space: pre-line;">${analysis.feedback}</p>
+                    </div>
 
-        async function loadJobPreparationHistory() {
-            try {
-                const response = await fetch('/api/job-preparation-history');
-                const data = await response.json();
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                        <div style="background: white; padding: 1rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; color: var(--primary); font-weight: bold;">${analysis.word_count}</div>
+                            <div style="color: #6b7280; font-size: 0.9rem;">Words</div>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; color: var(--success); font-weight: bold;">${analysis.keywords_found ? analysis.keywords_found.length : 0}</div>
+                            <div style="color: #6b7280; font-size: 0.9rem;">Key Terms</div>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; color: var(--warning); font-weight: bold;">${analysis.sentence_count}</div>
+                            <div style="color: #6b7280; font-size: 0.9rem;">Sentences</div>
+                        </div>
+                    </div>
 
-                if (data.success && data.preparations.length > 0) {
-                    document.getElementById('preparationHistory').classList.remove('hidden');
-                    const container = document.getElementById('preparationHistoryContent');
-                    
-                    container.innerHTML = data.preparations.map(prep => `
-                        <div class="job-card">
-                            <div class="job-header">
-                                <div>
-                                    <div class="job-title">${prep.job_title}</div>
-                                    <div class="job-company">${prep.company}</div>
-                                </div>
-                                <span class="match-score" style="background: var(--warning);">
-                                    ${prep.status}
-                                </span>
-                            </div>
-                            <div class="job-skills">
-                                ${prep.skills.map(skill => `<span class="job-skill">${skill}</span>`).join('')}
-                            </div>
-                            <p style="margin: 1rem 0 0; color: #6b7280; font-size: 0.9rem;">
-                                ${prep.questions_count} questions • Created ${new Date(prep.created_at).toLocaleDateString()}
-                            </p>
-                            <div class="job-actions">
-                                <button class="btn btn-primary" onclick="continueJobPreparation('${prep.job_title}', '${prep.company}', '${JSON.stringify(prep.skills)}')">
-                                    <i class="fas fa-play"></i> Continue Preparation
-                                </button>
+                    ${analysis.keywords_found && analysis.keywords_found.length > 0 ? `
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+                            <h4 style="margin-bottom: 1rem; color: var(--success);"><i class="fas fa-check-circle"></i> Technical Terms Found</h4>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                ${analysis.keywords_found.map(kw => 
+                                    `<span style="background: #d1fae5; color: #065f46; padding: 0.4rem 0.8rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;">${kw}</span>`
+                                ).join('')}
                             </div>
                         </div>
-                    `).join('');
-                }
-            } catch (error) {
-                console.error('Error loading preparation history:', error);
-            }
+                    ` : ''}
+
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        <button class="btn btn-primary" onclick="nextQuestion()" style="flex: 1;">
+                            <i class="fas fa-arrow-right"></i> Next Question
+                        </button>
+                        <button class="btn btn-secondary" onclick="retryQuestion()">
+                            <i class="fas fa-redo"></i> Retry
+                        </button>
+                    </div>
+                </div>
+            `;
+            container.classList.remove('hidden');
+            container.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        function continueJobPreparation(jobTitle, company, skills) {
-            showAlert(`Continuing preparation for ${jobTitle}`, 'info');
-            showSection('interview');
-            
-            // Generate questions based on the job skills
-            const skillsArray = JSON.parse(skills);
-            const questions = generateQuestionsFromSkills(skillsArray, jobTitle);
-            
-            currentQuestions = questions;
-            currentQuestionIndex = 0;
-            showQuestionsList();
+        function nextQuestion() {
+            currentQuestionIndex++;
             showNextQuestion();
         }
 
-        function generateQuestionsFromSkills(skills, jobTitle) {
-            // Simple question generation based on skills
-            const questions = [];
-            
-            skills.forEach(skill => {
-                questions.push({
-                    question: `Tell me about your experience with ${skill} and how you've used it in previous projects.`,
-                    skill: skill,
-                    difficulty: "Intermediate",
-                    category: "Technical",
-                    hints: ["Focus on specific projects", "Mention challenges and how you overcame them"]
-                });
-                
-                questions.push({
-                    question: `How would you approach learning a new aspect of ${skill} if required for this ${jobTitle} position?`,
-                    skill: skill,
-                    difficulty: "Basic",
-                    category: "Behavioral",
-                    hints: ["Discuss learning strategies", "Mention resources you would use"]
-                });
-            });
-            
-            // Add some general questions
-            questions.push({
-                question: `Why are you interested in this ${jobTitle} position?`,
-                skill: "Company Fit",
-                difficulty: "Basic",
-                category: "Behavioral",
-                hints: ["Research the company", "Connect your skills to the role"]
-            });
-            
-            return questions;
+        function retryQuestion() {
+            document.getElementById('answerInput').value = '';
+            document.getElementById('analysisResult').classList.add('hidden');
+            showAlert('Try answering again with more detail', 'info');
+        }
+
+        function prepareForInterview(jobTitle, company, skills) {
+            const skillsArray = skills.split(',').filter(s => s.trim());
+            document.getElementById('interviewSkills').value = skillsArray.slice(0, 5).join(', ');
+            showSection('interview');
+            showAlert(`Preparing for ${jobTitle} at ${company}`, 'info');
         }
 
         // Initialize
@@ -2079,13 +2104,14 @@
             showSection('home');
             
             // Check if user is logged in
-            fetch('/api/profile')
+            fetch('/api/user')
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        currentUser = {email: data.profile.email, name: data.profile.name};
-                        userSkills = data.profile.skills || [];
+                        currentUser = data.user;
+                        userSkills = data.user.skills || [];
                         updateNavigation();
+                        displayCurrentSkills();
                     }
                 })
                 .catch(err => console.log('Not logged in'));
